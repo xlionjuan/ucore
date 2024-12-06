@@ -52,7 +52,7 @@ jobs:
         run: |
           set -oue pipefail
           echo "---Grep image name---"
-          containerfile_path="${{ inputs.path }}/Containerfile"
+          containerfile_path="./${{ inputs.path }}/Containerfile"
           image=$(grep -i '^FROM' "$containerfile_path" | awk '{print $2}')
           echo "Image: "${image}""
           echo ""
