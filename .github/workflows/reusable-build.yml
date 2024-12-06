@@ -47,6 +47,9 @@ jobs:
         if: false
         run: sudo apt-get update && sudo apt-get upgrade -y
 
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.7.0
+
       - name: Check out the repository
         uses: actions/checkout@v4
 
@@ -67,9 +70,6 @@ jobs:
       - name: Maximize build space
         if: ${{ inputs.max_space == true }}
         uses: ublue-os/remove-unwanted-software@v7
-      
-      - name: Install Cosign
-        uses: sigstore/cosign-installer@v3.7.0
 
       - name: Extract metadata for Docker
         id: meta
