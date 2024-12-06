@@ -47,12 +47,15 @@ jobs:
         if: false
         run: sudo apt-get update && sudo apt-get upgrade -y
 
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
       - name: Verify
         shell: bash
         run: |
           set -oue pipefail
           echo "---Grep image name---"
-          containerfile_path="./${{ inputs.path }}/Containerfile"
+          containerfile_path="${{ inputs.path }}/Containerfile"
           image=$(grep -i '^FROM' "$containerfile_path" | awk '{print $2}')
           echo "Image: "${image}""
           echo ""
@@ -60,9 +63,6 @@ jobs:
           cosign verify \
             --key https://raw.githubusercontent.com/ublue-os/ucore/refs/heads/main/cosign.pub \
             "${image}"
-
-      - name: Check out the repository
-        uses: actions/checkout@v4
 
       - name: Maximize build space
         if: ${{ inputs.max_space == true }}
