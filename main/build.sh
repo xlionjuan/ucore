@@ -11,7 +11,7 @@ echo "Creating symlinks to fix packages that install to /opt"
 mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
-
+dnf5 upgrade -y dnf5
 # Install
 dnf5 install -y screen ntpd-rs sudo-rs vim htop wget
 
