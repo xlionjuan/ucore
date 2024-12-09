@@ -13,7 +13,7 @@ ln -s "/var/opt"  "/opt"
 
 dnf5 upgrade -y dnf5
 # Install
-dnf5 install -y screen ntpd-rs sudo-rs vim htop wget
+dnf5 install -y 'dnf5-command(copr)' screen ntpd-rs sudo-rs vim htop wget
 
 ## Use ntpd-rs to replace chronyd
 systemctl disable chronyd
