@@ -19,11 +19,8 @@ dnf5 install -y 'dnf5-command(copr)' screen ntpd-rs sudo-rs vim htop wget
 systemctl disable chronyd
 systemctl enable ntpd-rs
 
-# CachyOS Kernel
-dnf5 -y remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra zram-generator-defaults
-dnf5 copr enable -y bieszczaders/kernel-cachyos
+# CachyOS
 dnf5 copr enable -y bieszczaders/kernel-cachyos-addons
-rpm-ostree install kernel-cachyos
 dnf5 -y install scx-scheds cachyos-settings uksmd
 systemctl enable scx.service
 systemctl enable uksmd.service
