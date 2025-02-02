@@ -40,7 +40,7 @@ permissions:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
 
     steps:
       - name: System update
@@ -48,6 +48,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get upgrade -y
 
       - name: Install Podman, buildah
+        if: false
         uses: awalsh128/cache-apt-pkgs-action@v1.4.3
         with:
           packages: podman, buildah
@@ -77,6 +78,7 @@ jobs:
         uses: ublue-os/remove-unwanted-software@v7
 
       - name: Set up QEMU
+        if: false
         uses: docker/setup-qemu-action@v3
 
       - name: Extract metadata for Docker
