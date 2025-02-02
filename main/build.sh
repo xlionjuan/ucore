@@ -11,6 +11,8 @@ echo "Creating symlinks to fix packages that install to /opt"
 mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
+curl -fsSl https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
+
 dnf5 upgrade -y dnf5
 # Install
 dnf5 install -y 'dnf5-command(copr)' screen ntpd-rs sudo-rs vim htop wget
