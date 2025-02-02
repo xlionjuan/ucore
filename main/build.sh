@@ -23,4 +23,4 @@ systemctl enable ntpd-rs
 dnf5 copr enable -y bieszczaders/kernel-cachyos-addons
 dnf5 -y install scx-scheds cachyos-settings uksmd
 systemctl enable scx.service
-systemctl enable uksmd.service
+#systemctl enable uksmd.service
