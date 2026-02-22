@@ -10,7 +10,7 @@ echo "Creating symlinks to fix packages that install to /opt"
 mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
-curl -fsSl https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
+curl -fsSL https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
 
 dnf5 upgrade -y dnf5
 # Install
@@ -21,7 +21,8 @@ systemctl disable chronyd
 systemctl enable ntpd-rs
 
 # KVM PTP setup
-echo "ptp_kvm" | tee /etc/modules-load.d/ptp_kvm.conf
+mkdir -p /usr/lib/modules-load.d
+echo "ptp_kvm" | tee /usr/lib/modules-load.d/ptp_kvm.conf
 # Need to run on client side
 # sudo modprobe ptp_kvm
 # echo 'OPTIONS="-s /dev/ptp0 -c CLOCK_REALTIME -O 0 -m"' | sudo tee /etc/sysconfig/phc2sys
