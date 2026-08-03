@@ -1,4 +1,4 @@
-FROM ghcr.io/ublue-os/ucore-minimal:stable
+FROM ghcr.io/ublue-os/ucore-minimal:stable@sha256:a9c7ed1277e400e6742fd6c11d13294ff5072de6caf6462fe410dfebfdabb718
 
 COPY build.sh /tmp/build.sh
 
